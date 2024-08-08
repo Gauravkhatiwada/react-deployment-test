@@ -1,13 +1,17 @@
 #!/bin/bash
 
-#_Change_Working_Directory
+# Change Working Directory
 cd /home/ec2-user/server
 
-#_Update_&_Set_Node_Version
-curl -sL https://rpm.nodesource.com/setup_14.x | sudo -E bash -
+# Install nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+source ~/.bashrc
 
-#_Download_Node_&NPM
-yum -y install nodejs npm
+# Install the latest LTS version of Node.js
+nvm install --lts
 
-#_Download_PM2
+# Verify Node.js installation
+node -e "console.log('Running Node.js ' + process.version)"
+
+# Install PM2 globally
 npm install pm2@latest -g
